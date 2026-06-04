@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from src.members.base import CompanyMember
 from src.members.team_lead import TeamLead
@@ -47,4 +48,6 @@ class Company:
         return list(self.projects[team_lead.member_id])
 
     def load_tasks_from_file(self, file_path: str, project: Project) -> None:
+        if not Path(file_path).exists():
+            raise FileNotFoundError(f"Invalid file path: {file_path}")
         FileLoader.file_reader(file_path, project)

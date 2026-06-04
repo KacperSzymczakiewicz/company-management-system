@@ -16,6 +16,8 @@ class Employee(CompanyMember):
         self.tasks[task.task_id] = task
 
     def perform_task(self, task_id: int) -> None:
+        if task_id not in self.tasks:
+            raise ValueError(f'Task {task_id} not found')
         self.tasks[task_id].status = 'in progress'
 
     @override

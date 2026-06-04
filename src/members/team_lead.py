@@ -13,10 +13,14 @@ class TeamLead(Manager, Engineer):
         return f'Leading a team of {len(self.employees)} employees'
 
     def assign_task(self, employee_id: int, task: Task) -> None:
+        if employee_id not in self.employees:
+            raise ValueError(f'Employee {employee_id} does not exist')
         self.employees[employee_id].add_task(task)
 
     @override
     def review_task(self, task_id: int) -> None:
+        if task_id not in self.tasks:
+            raise ValueError(f'Task {task_id} not found')
         self.tasks[task_id].status = 'reviewed'
         print(f'TeamLead reviewed task: {self.tasks[task_id].title}')
 
