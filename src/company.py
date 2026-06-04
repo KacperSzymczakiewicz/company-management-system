@@ -5,6 +5,8 @@ from src.members.team_lead import TeamLead
 from src.models.project import Project
 from src.members.manager import Manager
 from src.members.employee import Employee
+from src.utils.file_loader import FileLoader
+
 
 @dataclass
 class Company:
@@ -45,4 +47,4 @@ class Company:
         return list(self.projects[team_lead.member_id])
 
     def load_tasks_from_file(self, file_path: str, project: Project) -> None:
-        ...
+        FileLoader.file_reader(file_path, project)
