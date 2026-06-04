@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Self
 
+
 @dataclass
 class Task:
     task_id: int
@@ -15,4 +16,3 @@ class Task:
     def parse(cls, task_str: str) -> Self:
         task_id, title, description, status = task_str.strip().split("|")
         return cls(int(task_id), title, description, status)
-
