@@ -1,67 +1,67 @@
 # Company Management System
 
-System zarządzania pracownikami i projektami firmowymi napisany w Pythonie. Projekt demonstruje znajomość programowania obiektowego, dziedziczenia, wielodziedziczenia oraz organizacji kodu w pakiety.
+A Python-based company management system demonstrating object-oriented programming, inheritance, multiple inheritance, and code organization into packages.
 
-## Tech stack
+## Tech Stack
 
 - Python 3.11+
-- `dataclasses` — modelowanie danych
-- `abc` — klasy abstrakcyjne
-- `typing` — typowanie statyczne
+- `dataclasses` — data modeling
+- `abc` — abstract base classes
+- `typing` — static type hints
 
-## Struktura projektu
+## Project Structure
 
 ```
 company-management-system/
 ├── src/
 │   ├── members/
-│   │   ├── base.py        # Abstrakcyjna klasa CompanyMember
-│   │   ├── employee.py    # Klasa Employee
-│   │   ├── engineer.py    # Klasa Engineer
-│   │   ├── manager.py     # Klasa Manager
-│   │   └── team_lead.py   # Klasa TeamLead (wielodziedziczenie)
+│   │   ├── base.py        # Abstract CompanyMember class
+│   │   ├── employee.py    # Employee class
+│   │   ├── engineer.py    # Engineer class
+│   │   ├── manager.py     # Manager class
+│   │   └── team_lead.py   # TeamLead class (multiple inheritance)
 │   ├── models/
-│   │   ├── task.py        # Klasa Task z parserem
-│   │   └── project.py     # Klasa Project
+│   │   ├── task.py        # Task class with parser
+│   │   └── project.py     # Project class
 │   ├── utils/
-│   │   └── file_loader.py # Wczytywanie zadań z pliku
-│   └── company.py         # Główna klasa zarządzająca firmą
+│   │   └── file_loader.py # Loading tasks from file
+│   └── company.py         # Main company management class
 ├── data/
-│   └── tasks.txt          # Przykładowe dane
-├── tests/                 # Testy jednostkowe (w przygotowaniu)
-├── main.py                # Demo działania systemu
+│   └── tasks.txt          # Sample data
+├── tests/                 # Unit tests (coming soon)
+├── main.py                # Demo
 ├── pyproject.toml
 └── README.md
 ```
 
-## Funkcjonalności
+## Features
 
-- Hierarchia ról: `CompanyMember` → `Employee` → `Engineer` / `Manager` → `TeamLead`
-- `TeamLead` dziedziczy jednocześnie po `Manager` i `Engineer` (wielodziedziczenie, MRO)
-- Pełny workflow zadań: `pending` → `in progress` → `implemented` → `reviewed` → `completed`
-- Wczytywanie zadań z pliku `.txt` przez własny parser (`Task.parse()`)
-- Zarządzanie zespołami i projektami przez klasę `Company`
+- Role hierarchy: `CompanyMember` → `Employee` → `Engineer` / `Manager` → `TeamLead`
+- `TeamLead` inherits from both `Manager` and `Engineer` (multiple inheritance, MRO)
+- Full task workflow: `pending` → `in progress` → `implemented` → `reviewed` → `completed`
+- Loading tasks from a `.txt` file via a custom parser (`Task.parse()`)
+- Team and project management through the `Company` class
 
-## Uruchomienie
+## Getting Started
 
 ```bash
-git clone https://github.com/TWOJ_LOGIN/company-management-system.git
+git clone https://github.com/KacperSzymczakiewicz/company-management-system
 cd company-management-system
 python main.py
 ```
 
-## Format pliku tasks.txt
+## tasks.txt Format
 
 ```
 task_id|title|description|status
-1|Logowanie|Formularz logowania użytkownika|pending
-2|Rejestracja|Formularz rejestracji nowego użytkownika|pending
+1|Login|User login form|pending
+2|Register|New user registration form|pending
 ```
 
 ## Roadmap
 
-- [ ] Obsługa wyjątków
-- [ ] Eksport danych do JSON / ZIP
-- [ ] Testy jednostkowe (pytest)
+- [ ] Exception handling
+- [ ] JSON / ZIP data export
+- [ ] Unit tests (pytest)
 - [ ] REST API (FastAPI)
-- [ ] Baza danych (PostgreSQL)
+- [ ] Database (PostgreSQL)
