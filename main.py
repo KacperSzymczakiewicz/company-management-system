@@ -5,7 +5,7 @@ from src.models.project import Project
 from src.company import Company
 
 
-def main():
+def main() -> None:
     engineer = Engineer(1, "Anna Kowalska", 28, specialization="backend")
     manager = Manager(2, "Jan Nowak", 45)
     team_lead = TeamLead(3, "Piotr Wiśniewski", 35, specialization="fullstack")
