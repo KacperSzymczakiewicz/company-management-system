@@ -60,7 +60,7 @@ task_id|title|description|status
 
 ## Roadmap
 
-- [ ] Exception handling
+- [x] Exception handling
 - [ ] JSON / ZIP data export
 - [ ] Unit tests (pytest)
 - [ ] REST API (FastAPI)
