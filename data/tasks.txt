@@ -1,0 +1,5 @@
+1|Logowanie|Formularz logowania użytkownika|pending
+2|Rejestracja|Formularz rejestracji nowego użytkownika|pending
+3|Dashboard|Strona główna po zalogowaniu|in progress
+4|Profil|Strona profilu użytkownika|implemented
+5|Ustawienia|Panel ustawień konta|reviewed
