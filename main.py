@@ -3,6 +3,7 @@ from src.members.manager import Manager
 from src.members.team_lead import TeamLead
 from src.models.project import Project
 from src.company import Company
+from src.utils.file_handler import FileHandler
 
 
 def main() -> None:
@@ -42,12 +43,16 @@ def main() -> None:
         print(engineer.info())
         print(manager.info())
         print(team_lead.info())
+
+        company.save_report("data/report.json")
+        print("Report saved to data/report.json")
     except ValueError as e:
         print(e)
     except FileNotFoundError as e:
         print(e)
     except Exception as e:
         print(e)
+
 
 if __name__ == "__main__":
     main()

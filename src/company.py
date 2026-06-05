@@ -6,7 +6,7 @@ from src.members.team_lead import TeamLead
 from src.models.project import Project
 from src.members.manager import Manager
 from src.members.employee import Employee
-from src.utils.file_loader import FileLoader
+from src.utils.file_handler import FileHandler
 
 
 @dataclass
@@ -50,4 +50,7 @@ class Company:
     def load_tasks_from_file(self, file_path: str, project: Project) -> None:
         if not Path(file_path).exists():
             raise FileNotFoundError(f"Invalid file path: {file_path}")
-        FileLoader.file_reader(file_path, project)
+        FileHandler.file_reader(file_path, project)
+
+    def save_report(self, file_path: str) -> None:
+        FileHandler.save_report(file_path, self)
