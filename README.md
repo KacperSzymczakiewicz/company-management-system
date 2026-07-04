@@ -1,4 +1,4 @@
-# Company Management System
+# Company Management System 💼
 
 > Pure Python system for managing employees, teams and projects — no frameworks, just clean OOP.
 
@@ -17,7 +17,7 @@ The system simulates a company structure where you can:
 
 ---
 
-## Getting Started
+## Getting Started ✅
 
 Requires [uv](https://docs.astral.sh/uv/).
 
@@ -30,7 +30,7 @@ uv run python main.py
 
 ---
 
-## Project Structure
+## Project Structure 
 
 ```
 company-management-system/
@@ -57,7 +57,7 @@ company-management-system/
 
 ---
 
-## Tech highlights
+## Tech highlights 
 
 - `TeamLead` inherits from both `Manager` and `Engineer` — MRO in action
 - every module has its own `getLogger(__name__)` — no root logger abuse
@@ -66,7 +66,7 @@ company-management-system/
 
 ---
 
-## Running Tests
+## Running Tests 
 
 ```bash
 uv run pytest
@@ -74,7 +74,7 @@ uv run pytest
 
 ---
 
-## Roadmap
+## Roadmap 🚀
 
 - [x] OOP with multiple inheritance and MRO
 - [x] Exception handling
