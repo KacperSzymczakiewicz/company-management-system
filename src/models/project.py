@@ -5,6 +5,7 @@ from src.models.task import Task
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class Project:
     name: str
