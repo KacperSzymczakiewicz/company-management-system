@@ -1,9 +1,15 @@
+import logging
 import json
 from dataclasses import asdict
+from typing import TYPE_CHECKING
 
 from src.models.task import Task
 from src.models.project import Project
 
+if TYPE_CHECKING:
+    from src.company import Company
+
+logger = logging.getLogger(__name__)
 
 class FileHandler:
 
@@ -27,3 +33,4 @@ class FileHandler:
         }
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(report, file, indent=4, ensure_ascii=False)
+        logger.info(f"Project report written to {file_path}")
