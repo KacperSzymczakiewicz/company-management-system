@@ -17,7 +17,7 @@ class Employee(CompanyMember):
     def add_task(self, task: Task) -> None:
         logger.debug(f"Adding task: {task.task_id}")
         self.tasks[task.task_id] = task
-        logger.info(f"Task {task.task_id} added")
+        logger.info(f"Task {task.task_id} added to {self.name} ({self.__class__.__name__})")
 
     def perform_task(self, task_id: int) -> None:
         if task_id not in self.tasks:

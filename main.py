@@ -9,7 +9,7 @@ from src.company import Company
 
 logging.basicConfig(level=logging.INFO,
                     stream=sys.stdout,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    format='%(asctime)s | %(name)s | %(levelname)s | %(message)s',
                     datefmt='%d-%b-%y %H:%M:%S'
                     )
 logger = logging.getLogger(__name__)
@@ -45,8 +45,6 @@ def main() -> None:
         team_lead.review_task(task)
 
         manager.complete_task(task)
-
-
 
         company.save_report("data/report.json")
         logger.info("Application finished successfully")
