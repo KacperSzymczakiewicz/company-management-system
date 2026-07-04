@@ -1,13 +1,34 @@
 # Company Management System
 
-A Python-based company management system demonstrating object-oriented programming, inheritance, multiple inheritance, and code organization into packages.
+> Pure Python system for managing employees, teams and projects — no frameworks, just clean OOP.
 
-## Tech Stack
+Built to demonstrate real-world code organization: multiple inheritance, design patterns, production-style logging and unit testing.
 
-- Python 3.11+
-- `dataclasses` — data modeling
-- `abc` — abstract base classes
-- `typing` — static type hints
+---
+
+## What it does
+
+The system simulates a company structure where you can:
+
+- create employees, engineers, managers and team leads
+- organize them into teams with assigned projects
+- manage tasks through a full workflow: `pending` → `in progress` → `implemented` → `reviewed` → `completed`
+- load tasks from a file and export a full company report to JSON
+
+---
+
+## Getting Started
+
+Requires [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone https://github.com/KacperSzymczakiewicz/company-management-system
+cd company-management-system
+uv sync
+uv run python main.py
+```
+
+---
 
 ## Project Structure
 
@@ -15,53 +36,56 @@ A Python-based company management system demonstrating object-oriented programmi
 company-management-system/
 ├── src/
 │   ├── members/
-│   │   ├── base.py        # Abstract CompanyMember class
-│   │   ├── employee.py    # Employee class
-│   │   ├── engineer.py    # Engineer class
-│   │   ├── manager.py     # Manager class
-│   │   └── team_lead.py   # TeamLead class (multiple inheritance)
+│   │   ├── base.py             # Abstract CompanyMember class
+│   │   ├── employee.py         # Employee class
+│   │   ├── engineer.py         # Engineer class
+│   │   ├── manager.py          # Manager class
+│   │   └── team_lead.py        # TeamLead (multiple inheritance)
 │   ├── models/
-│   │   ├── task.py        # Task class with parser
-│   │   └── project.py     # Project class
+│   │   ├── task.py             # Task class with parser
+│   │   └── project.py          # Project class
 │   ├── utils/
-│   │   └── file_loader.py # Loading tasks from file
-│   └── company.py         # Main company management class
+│   │   └── file_handler.py     # File I/O and JSON export
+│   └── company.py              # Main management class
 ├── data/
-│   └── tasks.txt          # Sample data
-├── tests/                 # Unit tests (coming soon)
-├── main.py                # Demo
-├── pyproject.toml
-└── README.md
+│   └── tasks.txt               # Sample data (id|title|description|status)
+├── tests/
+│   ├── conftest.py             # Shared fixtures
+│   └── test_*.py               # Unit tests
+└── main.py                     # Demo
 ```
 
-## Features
+---
 
-- Role hierarchy: `CompanyMember` → `Employee` → `Engineer` / `Manager` → `TeamLead`
-- `TeamLead` inherits from both `Manager` and `Engineer` (multiple inheritance, MRO)
-- Full task workflow: `pending` → `in progress` → `implemented` → `reviewed` → `completed`
-- Loading tasks from a `.txt` file via a custom parser (`Task.parse()`)
-- Team and project management through the `Company` class
+## Tech highlights
 
-## Getting Started
+- `TeamLead` inherits from both `Manager` and `Engineer` — MRO in action
+- every module has its own `getLogger(__name__)` — no root logger abuse
+- `Task.parse()` handles file deserialization with validation
+- `FileHandler` uses `asdict()` for clean JSON serialization
+
+---
+
+## Running Tests
 
 ```bash
-git clone https://github.com/KacperSzymczakiewicz/company-management-system
-cd company-management-system
-python main.py
+uv run pytest
 ```
 
-## tasks.txt Format
-
-```
-task_id|title|description|status
-1|Login|User login form|pending
-2|Register|New user registration form|pending
-```
+---
 
 ## Roadmap
 
+- [x] OOP with multiple inheritance and MRO
 - [x] Exception handling
-- [x] JSON data export
+- [x] JSON export
+- [x] Logging
 - [ ] Unit tests (pytest)
 - [ ] REST API (FastAPI)
 - [ ] Database (PostgreSQL)
+
+---
+
+## Author
+
+**Kacper Szymczakiewicz** — [GitHub](https://github.com/KacperSzymczakiewicz) · [LinkedIn](https://www.linkedin.com/in/kacper-szymczakiewicz-1a2911417/)
