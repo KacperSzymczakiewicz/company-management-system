@@ -1,12 +1,17 @@
+import logging
+
 from src.members.engineer import Engineer
 from src.members.manager import Manager
 from src.members.team_lead import TeamLead
 from src.models.project import Project
 from src.company import Company
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def main() -> None:
     try:
+        logger.info("Application started")
         engineer = Engineer(1, "Anna Kowalska", 28, specialization="backend")
         manager = Manager(2, "Jan Nowak", 45)
         team_lead = TeamLead(3, "Piotr Wiśniewski", 35, specialization="fullstack")
@@ -45,12 +50,11 @@ def main() -> None:
 
         company.save_report("data/report.json")
         print("Report saved to data/report.json")
-    except ValueError as e:
-        print(e)
-    except FileNotFoundError as e:
-        print(e)
+        logger.info("Application finished successfully")
+    except (ValueError, FileNotFoundError) as e:
+        logger.error(f"Application failed with error: {e}")
     except Exception as e:
-        print(e)
+        logger.exception(f"Unexpected error: {e}")
 
 
 if __name__ == "__main__":
