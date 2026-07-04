@@ -1,3 +1,4 @@
+import sys
 import logging
 
 from src.members.engineer import Engineer
@@ -7,6 +8,7 @@ from src.models.project import Project
 from src.company import Company
 
 logging.basicConfig(level=logging.INFO,
+                    stream=sys.stdout,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     datefmt='%d-%b-%y %H:%M:%S'
                     )
@@ -36,24 +38,17 @@ def main() -> None:
 
         engineer.add_task(task)
         engineer.perform_task(1)
-        print(task.info())
 
         engineer.implement_task(1)
-        print(task.info())
 
         team_lead.add_task(task)
         team_lead.review_task(task)
-        print(task.info())
 
         manager.complete_task(task)
-        print(task.info())
 
-        print(engineer.info())
-        print(manager.info())
-        print(team_lead.info())
+
 
         company.save_report("data/report.json")
-        print("Report saved to data/report.json")
         logger.info("Application finished successfully")
     except (ValueError, FileNotFoundError) as e:
         logger.error(f"Application failed with error: {e}")
