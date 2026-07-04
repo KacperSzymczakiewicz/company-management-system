@@ -6,8 +6,12 @@ from src.members.team_lead import TeamLead
 from src.models.project import Project
 from src.company import Company
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    datefmt='%d-%b-%y %H:%M:%S'
+                    )
 logger = logging.getLogger(__name__)
+
 
 def main() -> None:
     try:
@@ -38,7 +42,7 @@ def main() -> None:
         print(task.info())
 
         team_lead.add_task(task)
-        team_lead.review_task(1)
+        team_lead.review_task(task)
         print(task.info())
 
         manager.complete_task(task)
