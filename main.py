@@ -9,7 +9,7 @@ from src.company import Company
 
 logging.basicConfig(level=logging.INFO,
                     stream=sys.stdout,
-                    format='%(asctime)s | %(name)s | %(levelname)s | %(message)s',
+                    format='%(asctime)s | %(levelname)-8s | %(name)-30s | %(message)s',
                     datefmt='%d-%b-%y %H:%M:%S'
                     )
 logger = logging.getLogger(__name__)
