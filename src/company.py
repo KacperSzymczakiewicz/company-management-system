@@ -24,12 +24,6 @@ class Company:
         logger.debug(f"Members after adding: {list(self.members.keys())}")
         logger.info(f"Member {member.name} added")
 
-    def add_manager_with_employees(self, manager: Manager, employees: list[Employee]) -> None:
-        self.members[manager.member_id] = manager
-        for employee in employees:
-            self.members[employee.member_id] = employee
-        logger.info(f"Manager {manager.name} added with {len(employees)} employees")
-
     def remove_member(self, member_id: int) -> None:
         self.members.pop(member_id, None)
         self.teams.pop(member_id, None)
@@ -40,6 +34,9 @@ class Company:
 
     def get_all_members(self) -> list[CompanyMember]:
         return list(self.members.values())
+
+    def get_all_projects(self) -> list[Project]:
+        return [p for project in self.projects.values() for p in project]
 
     def get_member_by_id(self, member_id: int) -> CompanyMember | None:
         return self.members.get(member_id, None)
@@ -70,3 +67,4 @@ class Company:
     def save_report(self, file_path: str) -> None:
         logger.debug(f"Saving report to {file_path}")
         FileHandler.save_report(file_path, self)
+
