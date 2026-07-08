@@ -22,10 +22,10 @@ class Task:
         if len(parts) != 4:
             logger.error(f"Invalid task: {task_str}")
             raise ValueError(f"Invalid task string!")
-        task_id, title, description, status = parts
+        task_id_str, title, description, status = parts
         try:
-            task_id = int(task_id)
+            task_id = int(task_id_str)
         except ValueError:
-            logger.error(f"Invalid task id: {task_id}")
-            raise ValueError(f"Invalid task id!")
+            logger.error(f"Invalid task id: {task_id_str}")
+            raise ValueError("Invalid task id!")
         return cls(task_id, title, description, status)
