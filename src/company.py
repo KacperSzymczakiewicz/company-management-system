@@ -43,6 +43,7 @@ class Company:
 
     def create_team(self, team_lead: TeamLead, team_members: list[Employee]) -> None:
         self.teams[team_lead.member_id] = [member.member_id for member in team_members]
+        team_lead.employees = {m.member_id: m for m in team_members}
         logger.info(f"Team created for lead {team_lead.name}")
 
     def assign_project_to_team(self, team_lead: TeamLead, project: Project) -> None:
