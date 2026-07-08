@@ -55,7 +55,7 @@ class Company:
         logger.info(f"Project {project.name} assigned to {team_lead.name}")
 
     def get_team_projects(self, team_lead: TeamLead) -> list[Project]:
-        return list(self.projects[team_lead.member_id])
+        return list(self.projects.get(team_lead.member_id, []))
 
     def load_tasks_from_file(self, file_path: str, project: Project) -> None:
         logger.debug(f"Checking if {file_path} exists")
