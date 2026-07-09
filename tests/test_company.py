@@ -89,3 +89,9 @@ class TestCompany:
         company.save_report('src/report.txt')
 
         mock_save_report.assert_called_once_with('src/report.txt', company)
+
+
+    def test_team_lead_with_no_projects_return_empty_list(self, team_lead: TeamLead):
+        company = Company()
+
+        assert company.get_team_projects(team_lead) == []
