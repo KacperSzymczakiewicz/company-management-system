@@ -54,3 +54,11 @@ def team_lead(task: Task, employee: Employee) -> TeamLead:
         tasks={1: task},
         employees={1: employee},
     )
+
+@pytest.fixture
+def company(employee: Employee, manager: Manager, team_lead: TeamLead) -> Company:
+    company = Company()
+    company.add_member(employee)
+    company.add_member(manager)
+    company.add_member(team_lead)
+    return company
