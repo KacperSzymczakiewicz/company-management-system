@@ -43,6 +43,7 @@ class Company:
 
     def create_team(self, team_lead: TeamLead, team_members: list[Employee]) -> None:
         self.teams[team_lead.member_id] = [member.member_id for member in team_members]
+        team_lead.employees = {m.member_id: m for m in team_members}
         logger.info(f"Team created for lead {team_lead.name}")
 
     def assign_project_to_team(self, team_lead: TeamLead, project: Project) -> None:
@@ -54,7 +55,7 @@ class Company:
         logger.info(f"Project {project.name} assigned to {team_lead.name}")
 
     def get_team_projects(self, team_lead: TeamLead) -> list[Project]:
-        return list(self.projects[team_lead.member_id])
+        return list(self.projects.get(team_lead.member_id, []))
 
     def load_tasks_from_file(self, file_path: str, project: Project) -> None:
         logger.debug(f"Checking if {file_path} exists")
