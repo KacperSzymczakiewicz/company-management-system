@@ -4,7 +4,7 @@ from typing import override
 
 from src.members.base import CompanyMember
 from src.members.employee import Employee
-from src.models.task import Task
+from src.models.task import Task, TaskStatus
 from src.models.project import Project
 
 logger = logging.getLogger(__name__)
@@ -22,15 +22,15 @@ class Manager(CompanyMember):
         logger.info(f"Manager created task: {task.task_id}")
 
     def review_task(self, task: Task) -> None:
-        task.status = 'reviewed'
+        task.status = TaskStatus.REVIEWED
         logger.info(f"Manager reviewed task: {task.task_id}")
 
     def complete_task(self, task: Task) -> None:
-        task.status = 'completed'
+        task.status = TaskStatus.COMPLETED
         logger.info(f"Manager closed task: {task.task_id}")
 
     def request_changes(self, task: Task) -> None:
-        task.status = 'requires changes'
+        task.status = TaskStatus.REQUIRES_CHANGES
         logger.info(f"Manager requested changes for task: {task.task_id}")
 
     @override

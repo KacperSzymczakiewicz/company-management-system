@@ -3,7 +3,8 @@ from dataclasses import dataclass, field
 from typing import override
 
 from src.members.base import CompanyMember
-from src.models.task import Task
+from src.models.task import Task, TaskStatus
+
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ class Employee(CompanyMember):
         if task_id not in self.tasks:
             logger.error(f"Task not found: task_id={task_id}")
             raise ValueError(f'Task {task_id} not found')
-        self.tasks[task_id].status = 'in progress'
+        self.tasks[task_id].status = TaskStatus.IN_PROGRESS
         logger.info(f"Task {task_id} in progress")
 
     @override

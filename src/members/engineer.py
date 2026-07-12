@@ -2,6 +2,7 @@ import logging
 from dataclasses import dataclass
 from typing import override
 
+from models.task import TaskStatus
 from src.members.employee import Employee
 
 logger = logging.getLogger(__name__)
@@ -18,7 +19,7 @@ class Engineer(Employee):
         if task_id not in self.tasks:
             logger.error(f"Task not found: task_id={task_id}")
             raise ValueError(f'Task {task_id} not found')
-        self.tasks[task_id].status = 'implemented'
+        self.tasks[task_id].status = TaskStatus.COMPLETED
         logger.info(f"Task {task_id} implemented")
 
     @override
