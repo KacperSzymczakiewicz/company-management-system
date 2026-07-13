@@ -1,6 +1,6 @@
 import pytest
 
-from src.models.task import Task
+from src.models.task import Task, TaskStatus
 
 
 class TestTask:
@@ -17,10 +17,16 @@ class TestTask:
         assert res.task_id == 1
         assert res.title == "Logowanie"
         assert res.description == "Formularz logowania użytkownika"
-        assert res.status == "pending"
+        assert res.status == TaskStatus.PENDING
 
     def test_parse_invalid_task_id_raises_value_error(self):
         with pytest.raises(ValueError) as err:
             Task.parse("abc|Logowanie|Formularz logowania użytkownika|pending")
 
         assert str(err.value) == "Invalid task id!"
+
+    def test_parse_invalid_task_status_raises_value_error(self):
+        with pytest.raises(ValueError) as err:
+            Task.parse("1|Logowanie|Formularz logowania użytkownika|pendin")
+
+        assert str(err.value) == "Invalid task status!"

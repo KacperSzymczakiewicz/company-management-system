@@ -4,7 +4,7 @@ from src.members.engineer import Engineer
 from src.members.team_lead import TeamLead
 from src.members.manager import Manager
 from src.models.project import Project
-from src.models.task import Task
+from src.models.task import Task, TaskStatus
 from src.members.employee import Employee
 from src.company import Company
 
@@ -23,7 +23,7 @@ def employees() -> list[Employee]:
 
 @pytest.fixture
 def task() -> Task:
-    return Task(task_id=1, title="Logowanie", description="Formularz logowania użytkownika", status="pending")
+    return Task(task_id=1, title="Logowanie", description="Formularz logowania użytkownika", status=TaskStatus.PENDING)
 
 
 @pytest.fixture
