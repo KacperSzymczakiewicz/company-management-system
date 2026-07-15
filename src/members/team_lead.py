@@ -4,7 +4,7 @@ from typing import override
 
 from src.members.manager import Manager
 from src.members.engineer import Engineer
-from src.models.task import Task
+from src.models.task import Task, TaskStatus
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,7 @@ class TeamLead(Manager, Engineer):
 
     @override
     def review_task(self, task: Task) -> None:
-        task.status = 'reviewed'
+        task.status = TaskStatus.REVIEWED
         logger.info(f"TeamLead {self.name} reviewed task: {task.task_id}")
 
     @override
