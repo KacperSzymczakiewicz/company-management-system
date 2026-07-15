@@ -5,7 +5,6 @@ from pathlib import Path
 from src.members.base import CompanyMember
 from src.members.team_lead import TeamLead
 from src.models.project import Project
-from src.members.manager import Manager
 from src.members.employee import Employee
 from src.utils.file_handler import FileHandler
 
