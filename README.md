@@ -80,7 +80,7 @@ uv run pytest
 - [x] Exception handling
 - [x] JSON export
 - [x] Logging
-- [ ] Unit tests (pytest)
+- [x] Unit tests (pytest)
 - [ ] REST API (FastAPI)
 - [ ] Database (PostgreSQL)
 
