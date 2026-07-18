@@ -13,6 +13,6 @@ class TestCompanyMember:
         with pytest.raises(ValueError):
             Employee(1, "", 20)
 
-    def test_member_invalid_phone_raises_value_error(self) -> None:
+    def test_member_invalid_age_raises_value_error(self) -> None:
         with pytest.raises(ValueError):
             Employee(1, "Kacper", -20)
