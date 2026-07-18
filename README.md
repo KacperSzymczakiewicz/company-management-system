@@ -12,7 +12,7 @@ The system simulates a company structure where you can:
 
 - create employees, engineers, managers and team leads
 - organize them into teams with assigned projects
-- manage tasks through a full workflow: `pending` → `in progress` → `implemented` → `reviewed` → `completed`
+- manage tasks through a workflow
 - load tasks from a file and export a full company report to JSON
 
 ---
