@@ -11,10 +11,20 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
+
 class FileHandler:
+    """Handles reading and writing company data to files."""
 
     @staticmethod
     def file_reader(file_path: str, project: Project) -> None:
+        """Read tasks from a file and add them to the given project.
+
+        Each non-empty line is parsed as a pipe-separated task string.
+
+        Args:
+            file_path: Path to the file containing task data.
+            project: Project instance to which parsed tasks will be added.
+        """
         with open(file_path, 'r', encoding='utf-8') as file:
             for line in file:
                 if line.strip():
@@ -23,6 +33,12 @@ class FileHandler:
 
     @staticmethod
     def save_report(file_path: str, company: 'Company') -> None:
+        """Save a full company report to a JSON file.
+
+        Args:
+            file_path: Path to the output JSON file.
+            company: Company instance whose data will be serialized.
+        """
         report = {
             "members": [asdict(m) for m in company.members.values()],
             "teams": company.teams,
